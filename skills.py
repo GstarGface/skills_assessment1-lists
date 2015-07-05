@@ -21,8 +21,11 @@ def all_odd(number_list):
         []
 
     """
-
-    return []
+    odd_nums = []
+    for item in number_list:
+        if int(item) % 2 != 0:
+            odd_nums.append(item)
+    return odd_nums
 
 
 def all_even(number_list):
@@ -35,8 +38,11 @@ def all_even(number_list):
         []
 
     """
-
-    return []
+    even_nums = []
+    for item in number_list:
+        if int(item) % 2 == 0:
+            even_nums.append(item)
+    return even_nums
 
 
 def print_indeces(my_list):
@@ -57,8 +63,9 @@ def print_indeces(my_list):
     2 Volvo
 
     """
-
-    print "Nothing at all"
+    for item in my_list:
+        print my_list.index(item),
+        print item
 
 
 def long_words(word_list):
@@ -71,8 +78,11 @@ def long_words(word_list):
         []
 
     """
-
-    return []
+    greater_than_four = []
+    for item in word_list:
+        if len(item) > 4:
+            greater_than_four.append(item) 
+    return greater_than_four
 
 
 def smallest_int(number_list):
@@ -87,8 +97,11 @@ def smallest_int(number_list):
         True
 
     """
-
-    return 100
+    if number_list == []:
+        return None
+    else: 
+        number_list.sort()
+        return number_list[0]
 
 
 def largest_int(number_list):
@@ -103,9 +116,12 @@ def largest_int(number_list):
         True
 
     """
-
-    return 0
-
+    if number_list == []:
+        return None
+    else: 
+        number_list.sort()
+        return number_list[-1]
+    
 
 def halvesies(number_list):
     """Return list of numbers from input list, each divided by two.
@@ -113,14 +129,16 @@ def halvesies(number_list):
         >>> halvesies([2, 6, -2])
         [1.0, 3.0, -1.0]
 
-    If any of the numbers are, make sure you don't round off the half:
+    If any of the numbers are odd, make sure you don't round off the half:
 
         >>> halvesies([1, 5])
         [0.5, 2.5]
 
     """
-
-    return []
+    halfs = []
+    for number in number_list:
+        halfs.append(float(number) / 2)
+    return halfs
 
 
 def word_lengths(word_list):
@@ -130,8 +148,10 @@ def word_lengths(word_list):
         [5, 3, 5, 4]
 
     """
-
-    return []
+    lengths = []
+    for word in word_list:
+        lengths.append(len(word))
+    return lengths
 
 
 def sum_numbers(number_list):
@@ -149,8 +169,10 @@ def sum_numbers(number_list):
         0
 
     """
-
-    return 0
+    sums = 0
+    for number in number_list:
+        sums += number
+    return sums
 
 
 def mult_numbers(number_list):
@@ -171,14 +193,16 @@ def mult_numbers(number_list):
         1
 
     """
-
-    return 0
+    product = 1
+    for number in number_list:
+        product *= number
+    return product
 
 
 def join_strings(word_list):
     """Return a string of all input strings joined together.
 
-    Python ha a built-in method on lists, `join` -- but this exercise, you
+    Python has a built-in method on lists, `join` -- but this exercise, you
     should not use it.
 
         >>> join_strings(["spam", "spam", "bacon", "balloonicorn"])
@@ -190,8 +214,10 @@ def join_strings(word_list):
         ''
 
     """
-
-    return ""
+    joined_string = ""
+    for word in word_list:
+        joined_string += word
+    return joined_string
 
 
 def average(number_list):
@@ -203,30 +229,39 @@ def average(number_list):
     There is no defined answer if the list given is empty. It's fine if
     this raises an error when given an empty list.
     """
-
-    return 0
+    total = 0
+    count = 0
+    for number in number_list:
+        total += float(number)
+        count += 1
+    return total / count 
 
 
 ##############################################################################
 # END OF SKILLS TEST; YOU CAN STOP HERE OR YOU CAN WORK ON ADVANCED PROBLEMS
 
+def advanced_join_strings(list_of_words):
+    """Return a single string with each word from the input list
+     separated by a comma.
 
-# def advanced_join_strings(list_of_words):
-#     """Return a single string with each word from the input list
-#     separated by a comma.
-#
-#         >>> advanced_join_strings(["Labrador", "Poodle", "French Bulldog"])
-#         'Labrador, Poodle, French Bulldog'
-#
-#     If there's only one thing in the list, it should return just that
-#     thing, of course:
-#
-#         >>> advanced_join_strings(["Pretzel"])
-#         'Pretzel'
-#
-#     """
-#
-#     return ""
+         >>> advanced_join_strings(["Labrador", "Poodle", "French Bulldog"])
+         'Labrador, Poodle, French Bulldog'
+
+     If there's only one thing in the list, it should return just that
+     thing, of course:
+
+         >>> advanced_join_strings(["Pretzel"])
+         'Pretzel'
+    """
+    joined_string = ""
+
+    for word in list_of_words:
+        if list_of_words.index(word) == 0:
+            joined_string += word
+        else:
+            joined_string += ", "
+            joined_string += word
+    return joined_string
 
 
 ##############################################################################
